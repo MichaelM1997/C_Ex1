@@ -13,25 +13,25 @@ LIB_S_LOOP = libclassloops.a
 main.o: main.c
 	$(CC) $(FLAGS) main.c -o $(OBJECTS_MAIN)
 	
-loops: $(LIB_S_LOOP) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
+loops: $(LIB_S_LOOP)
 
 $(OBJECTS_BASIC): basicClassification.c
-	$(CC) $(FLAGS) basicClassification.c -o $(OBJECTS_BASIC)
+	$(CC) $(FLAGS) basicClassification.c
 
-$(OBJECTS_ADVANCED_LOOP): $(OBJECTS_ADVANCED_LOOP)
-	$(CC) $(FLAGS) advancedClassificationLoop.c -o $(OBJECTS_ADVANCED_LOOP)
+$(OBJECTS_ADVANCED_LOOP): advancedClassificationLoop.c
+	$(CC) $(FLAGS) advancedClassificationLoop.c
 
-recursives: $(LIB_S_REC) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC)
+recursives: $(LIB_S_REC)
 
 $(OBJECTS_ADVANCED_REC): advancedClassificationRecursion.c
-	$(CC) $(FLAGS) advancedClassificationRecursion.c -o $(OBJECTS_ADVANCED_REC)
+	$(CC) $(FLAGS) advancedClassificationRecursion.c
 
-recursived: $(LIB_D_REC) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC)
+recursived: $(LIB_D_REC)
 
 $(LIB_D_REC): $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC)
 	$(CC) -shared $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC) -o $(LIB_D_REC)
 	
-loopd: $(LIB_D_LOOP) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
+loopd: $(LIB_D_LOOP)
 
 $(LIB_D_LOOP): $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
 	$(CC) -shared $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP) -o $(LIB_D_LOOP)
@@ -51,15 +51,10 @@ maindloop: $(OBJECTS_MAIN) $(LIB_D_LOOP)
 maindrec: $(OBJECTS_MAIN) $(LIB_D_REC) 
 	$(CC) -o maindrec $(OBJECTS_MAIN) ./$(LIB_D_REC) -lm
 
-all:  loops loopd recursives recursived mains maindloop
+all: loops loopd recursives recursived mains maindloop maindrec
 
 .PHONY: clean all
 
 clean: 
-	rm -f *.o *.a *.so "maindloop" "maindrec" "mains"
+	rm -f *.o *.a *.so maindloop maindrec mains
 	
-	
-	
-	
-	
-
