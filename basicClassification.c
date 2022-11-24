@@ -7,7 +7,7 @@ int isPrime(int i){
     int temp = sqrt(i);
     int prime = 0;
     
-    if( i == 0 || i == 1){
+    if( i == 0){
        prime = 1;
     }
     
