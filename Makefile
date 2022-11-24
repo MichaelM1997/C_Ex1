@@ -43,7 +43,7 @@ $(LIB_S_LOOP): $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
 	$(AR) -rsc $(LIB_S_LOOP) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
 
 mains: $(OBJECTS_MAIN) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC) $(LIB_S_REC)
-	$(CC) -o mains main.o $(LIB_S_REC)
+	$(CC) -o mains main.o $(LIB_S_REC) -lm
 	
 maindloop: $(OBJECTS_MAIN) $(LIB_D_LOOP) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
 	$(CC) -o maindloop $(OBJECTS_MAIN) ./$(LIB_D_LOOP) -lm
