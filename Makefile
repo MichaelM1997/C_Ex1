@@ -45,10 +45,10 @@ $(LIB_S_LOOP): $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
 mains: $(OBJECTS_MAIN) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC) $(LIB_S_REC)
 	$(CC) -o mains main.o $(LIB_S_REC) -lm
 	
-maindloop: $(OBJECTS_MAIN) $(LIB_D_LOOP) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_LOOP)
+maindloop: $(OBJECTS_MAIN) $(LIB_D_LOOP) 
 	$(CC) -o maindloop $(OBJECTS_MAIN) ./$(LIB_D_LOOP) -lm
 	
-maindrec: $(OBJECTS_MAIN) $(LIB_D_REC) $(OBJECTS_BASIC) $(OBJECTS_ADVANCED_REC)
+maindrec: $(OBJECTS_MAIN) $(LIB_D_REC) 
 	$(CC) -o maindrec $(OBJECTS_MAIN) ./$(LIB_D_REC) -lm
 
 all:  loops loopd recursives recursived main.o
